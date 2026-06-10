@@ -16,10 +16,17 @@ def render_dashboard(file):
 
     st.title("Dashboard pogodowy")
 
+    labels = {
+        "wind_speed": "Prędkość wiatru",
+        "pressure": "Ciśnienie",
+        "clouds": "Zachmurzenie"
+    }
+
     st.sidebar.header("Opcje widoku")
     selected_column = st.sidebar.selectbox(
         "Wybierz kolumnę do wykresu",
         ["wind_speed", "pressure", "clouds"],
+        format_func=lambda x: labels[x],
     )
     show_table = st.sidebar.checkbox(
         "Pokaż tabelę",
